@@ -30,3 +30,21 @@ class Graph:
             self.add_edge(points[0], points[1])
             self.add_edge(points[1], points[0])
     
+
+
+def dijkstra_length(graph, start, end):
+    visited = set()
+    queue = [(start, 0)]
+    while len(queue) > 0:
+        current_node, current_distance = queue.pop(0)
+        if current_node == end:
+            return current_distance
+        
+        if current_node in visited:
+            continue
+
+        visited.add(current_node)
+
+        for neighbor_node, neighbor_distance in graph[current_node]:
+            queue.append((neighbor_node, current_distance + neighbor_distance))
+        queue = sorted(queue, key=lambda node: node[1])
