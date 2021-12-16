@@ -1,2 +1,3 @@
-from .file import get_lines
-from .graphs import get_graph
+from .file import *
+from .graphs import *
+from .grid import *
